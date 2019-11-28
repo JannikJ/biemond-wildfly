@@ -16,7 +16,7 @@ define wildfly::cli(
   Optional[String] $onlyif = undef,
   Optional[Boolean] $refreshonly = undef,
   String $username         = $wildfly::mgmt_user['username'],
-  String $password         = $wildfly::mgmt_user['password'],
+  Sensitive[String] $password = $wildfly::mgmt_user['password'],
   String $host             = $wildfly::properties['jboss.bind.address.management'],
   String $port             = $wildfly::properties['jboss.management.http.port'],
   Boolean $secure          = $wildfly::secure_mgmt_api,
