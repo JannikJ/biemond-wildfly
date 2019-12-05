@@ -95,6 +95,9 @@ Puppet::Type.newtype(:wildfly_resource) do
 
     validate do |value|
       raise("#{value} is not a Hash") unless value.is_a?(Hash)
+      if value.key?("password")
+        value["password"] = Puppet::Pops::Types::PSensitiveType::Sensitive.new(value[:password])
+      end
     end
   end
 end
